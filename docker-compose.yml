@@ -1,0 +1,54 @@
+version: '3.9'
+services:
+  database:
+    container_name: 'familydatabase'
+    image: mysql
+    environment:
+        MYSQL_USER: admin
+        MYSQL_PASSWORD: password
+        MYSQL_DATABASE: familydatabase
+        MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      timeout: 10s
+      retries: 3
+      interval: 15s
+  familymemberapp:
+    build: ./summary/familymemberApp
+    ports:
+      - "9010:9010"
+    container_name: FamilyMemberAPP
+    healthcheck:
+      test: [ "CMD", "wget" ,"--spider", "http://localhost:9010/actuator/health"]
+      timeout: 10s
+      retries: 3
+      interval: 15s
+    depends_on:
+      database:
+        condition: service_healthy
+  familyapp:
+    build: ./summary/familyapp
+    ports:
+      - "9020:9020"
+    container_name: FamilyAPP
+    healthcheck:
+      test: [ "CMD", "wget" ,"--spider", "http://localhost:9020/actuator/health" ]
+      timeout: 10s
+      retries: 3
+      interval: 15s
+    depends_on:
+      familymemberapp:
+        condition: service_healthy
+  phpmyadmindamily:
+    image: phpmyadmin
+    ports:
+      - 9030:80
+    environment:
+      - PMA_ARBITRARY=1
+
+
+
+
+
