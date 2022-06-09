@@ -1,9 +1,6 @@
 package pl.korman.docker.familymemberapp.FamilyMember;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -12,6 +9,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
+@RequiredArgsConstructor
 public class FamilyMember {
 
     @Setter(AccessLevel.NONE)
@@ -19,9 +17,13 @@ public class FamilyMember {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
 
+    @NonNull
     private int familyId;
+    @NonNull
     private String givenName;
+    @NonNull
     private String familyName;
+    @NonNull
     private int age;
 
 }
