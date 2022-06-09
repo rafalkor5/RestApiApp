@@ -1,9 +1,6 @@
 package pl.korman.docker.familyapp.Family;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -20,11 +17,14 @@ public class Family {
     private int Id;
 
     private String familyName;
-
     private int nrOfAdults;
     private int nrOfChildren;
     private int nrOfInfants;
 
-
-
+    public Family(final String familyName, final int nrOfAdults, final int nrOfChildren, final int nrOfInfants) {
+        this.familyName = familyName;
+        this.nrOfAdults = nrOfAdults;
+        this.nrOfChildren = nrOfChildren;
+        this.nrOfInfants = nrOfInfants;
+    }
 }
