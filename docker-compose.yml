@@ -4,10 +4,11 @@ services:
     container_name: 'familydatabase'
     image: mysql
     environment:
-        MYSQL_USER: admin
+        MYSQL_USER: user
         MYSQL_PASSWORD: password
-        MYSQL_DATABASE: familydatabase
         MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - ./mysql-dump:/docker-entrypoint-initdb.d
     ports:
       - "3306:3306"
     healthcheck:
@@ -41,10 +42,10 @@ services:
     depends_on:
       familymemberapp:
         condition: service_healthy
-  phpmyadmindamily:
+  phpmyadminfamilycontainer:
     image: phpmyadmin
     ports:
-      - 9030:80
+      - "9030:80"
     environment:
       - PMA_ARBITRARY=1
 
