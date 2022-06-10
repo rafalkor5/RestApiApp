@@ -8,8 +8,8 @@ import java.util.List;
 
 @AllArgsConstructor
 @Getter
-@Setter
 public class FamilyOutputDTO {
+    private int id;
     private String familyName;
     private int nrOfAdults;
     private int nrOfChildren;
