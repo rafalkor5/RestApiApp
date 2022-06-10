@@ -1,0 +1,1 @@
+INSERT INTO family (familyName,nrOfAdults,nrOfChildren,nrOfInfants) VALUES('Kowalski','1','2','2');
