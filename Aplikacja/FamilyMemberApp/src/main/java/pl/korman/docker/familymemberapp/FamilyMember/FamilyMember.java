@@ -18,6 +18,7 @@ public class FamilyMember {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
 
+
     @NonNull
     private int familyId;
     @NotBlank

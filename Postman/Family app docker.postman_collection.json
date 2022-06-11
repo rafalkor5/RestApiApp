@@ -1,0 +1,227 @@
+{
+	"info": {
+		"_postman_id": "b6ee9ca6-c3ac-4a51-b002-6bff7f18d035",
+		"name": "Family app docker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "FamilyMember",
+			"item": [
+				{
+					"name": "SerachFamilyMember",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9010/familymember/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9010",
+							"path": [
+								"familymember",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateFamilyMember",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"familyId\": 2,\r\n    \"givenName\": \"Mateusz\",\r\n    \"familyName\": \"Kowalski\",\r\n    \"age\": 15\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9010/familymember",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9010",
+							"path": [
+								"familymember"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateFamilyMember 400 Bad Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"familyId\": 2,\r\n    \"givenName\": \"\",\r\n    \"familyName\": \"Kowalski\",\r\n    \"age\": 20\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9010/familymember",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9010",
+							"path": [
+								"familymember"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FamilyApp",
+			"item": [
+				{
+					"name": "GetFamily",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9020/family/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9020",
+							"path": [
+								"family",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateFamily 201 Created",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"familyName\":\"Piputuś\",\r\n   \"nrOfAdults\":1,\r\n   \"nrOfChildren\":2,\r\n   \"nrOfInfants\":2,\r\n   \"familyMembersList\":[\r\n      {\r\n         \"givenName\":\"Mateusz\",\r\n         \"familyName\":\"Piputuś\",\r\n         \"age\":0\r\n      },\r\n      {\r\n         \"givenName\":\"Katarzyna\",\r\n         \"familyName\":\"Piputuś\",\r\n         \"age\":3\r\n      },\r\n      {\r\n         \"givenName\":\"Asia\",\r\n         \"familyName\":\"Piputuś\",\r\n         \"age\":4\r\n      },\r\n      {\r\n         \"givenName\":\"Andrzej\",\r\n         \"familyName\":\"Piputuś\",\r\n         \"age\":15\r\n      },\r\n      {\r\n         \"givenName\":\"Izabela\",\r\n         \"familyName\":\"Piputuś\",\r\n         \"age\":16\r\n      }\r\n   ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9020/family",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9020",
+							"path": [
+								"family"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateFamily Bad Validate 400 Bad Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"familyName\":\"Piputuś\",\r\n   \"nrOfAdults\":0,\r\n   \"nrOfChildren\":2,\r\n   \"nrOfInfants\":2,\r\n   \"familyMembersList\":[\r\n      {\r\n         \"givenName\":\"Mateusz\",\r\n         \"familyName\":\"Piputuś\",\r\n         \"age\":0\r\n      },\r\n      {\r\n         \"givenName\":\"Katarzyna\",\r\n         \"familyName\":\"Piputuś\",\r\n         \"age\":3\r\n      },\r\n      {\r\n         \"givenName\":\"Asia\",\r\n         \"familyName\":\"Piputuś\",\r\n         \"age\":4\r\n      },\r\n      {\r\n         \"givenName\":\"Andrzej\",\r\n         \"familyName\":\"Piputuś\",\r\n         \"age\":15\r\n      },\r\n      {\r\n         \"givenName\":\"Izabela\",\r\n         \"familyName\":\"Piputuś\",\r\n         \"age\":16\r\n      }\r\n   ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9020/family",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9020",
+							"path": [
+								"family"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateFamily Bad Validate 400 Bad Request Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"familyName\":\"Piputuś\",\r\n   \"nrOfAdults\":1,\r\n   \"nrOfChildren\":2,\r\n   \"nrOfInfants\":1,\r\n   \"familyMembersList\":[\r\n      {\r\n         \"givenName\":\"Mateusz\",\r\n         \"familyName\":\"Piputuś\",\r\n         \"age\":-1\r\n      },\r\n      {\r\n         \"givenName\":\"Katarzyna\",\r\n         \"familyName\":\"Piputuś\",\r\n         \"age\":3\r\n      },\r\n      {\r\n         \"givenName\":\"Asia\",\r\n         \"familyName\":\"Piputuś\",\r\n         \"age\":4\r\n      },\r\n      {\r\n         \"givenName\":\"Andrzej\",\r\n         \"familyName\":\"Piputuś\",\r\n         \"age\":15\r\n      },\r\n      {\r\n         \"givenName\":\"Izabela\",\r\n         \"familyName\":\"Piputuś\",\r\n         \"age\":16\r\n      }\r\n   ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9020/family",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9020",
+							"path": [
+								"family"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateFamily empty members",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"familyName\":\"Piputuś\",\r\n   \"nrOfAdults\":0,\r\n   \"nrOfChildren\":0,\r\n   \"nrOfInfants\":0,\r\n   \"familyMembersList\":[]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9020/family",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9020",
+							"path": [
+								"family"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

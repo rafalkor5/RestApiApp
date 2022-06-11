@@ -1,0 +1,199 @@
+{
+	"info": {
+		"_postman_id": "0ec6a15c-96c5-4e69-af22-c0ef74663b96",
+		"name": "Family app local",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "FamilyMember",
+			"item": [
+				{
+					"name": "SerachFamilyMember",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9014/familymember/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9014",
+							"path": [
+								"familymember",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateFamilyMember",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"familyId\":3,\r\n    \"givenName\":\"test\",\r\n    \"familyName\":\"Kowalski\",\r\n    \"age\":15\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9014/familymember",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9014",
+							"path": [
+								"familymember"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FamilyApp",
+			"item": [
+				{
+					"name": "GetFamily",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9026/family/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9026",
+							"path": [
+								"family",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateFamily 201 Created",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"familyName\": \"Piputuś\",\r\n    \"nrOfAdults\": 1,\r\n    \"nrOfChildren\": 1,\r\n    \"nrOfInfants\": 1,\r\n    \"familyMembersList\": [\r\n        {\r\n            \"givenName\": \"Mateusz\",\r\n            \"familyName\": \"Piputuś\",\r\n            \"age\": 0\r\n        },\r\n        {\r\n            \"givenName\": \"Andrzej\",\r\n            \"familyName\": \"Piputuś\",\r\n            \"age\": 15\r\n        },\r\n        {\r\n            \"givenName\": \"Izabela\",\r\n            \"familyName\": \"Piputuś\",\r\n            \"age\": 16\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9026/family",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9026",
+							"path": [
+								"family"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateFamily Bad Validate 400 Bad Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"familyName\":\"Piputuś\",\r\n   \"nrOfAdults\":0,\r\n   \"nrOfChildren\":2,\r\n   \"nrOfInfants\":2,\r\n   \"familyMembersList\":[\r\n      {\r\n         \"givenName\":\"Mateusz\",\r\n         \"familyName\":\"Piputuś\",\r\n         \"age\":0\r\n      },\r\n      {\r\n         \"givenName\":\"Katarzyna\",\r\n         \"familyName\":\"Piputuś\",\r\n         \"age\":3\r\n      },\r\n      {\r\n         \"givenName\":\"Asia\",\r\n         \"familyName\":\"Piputuś\",\r\n         \"age\":4\r\n      },\r\n      {\r\n         \"givenName\":\"Andrzej\",\r\n         \"familyName\":\"Piputuś\",\r\n         \"age\":15\r\n      },\r\n      {\r\n         \"givenName\":\"Izabela\",\r\n         \"familyName\":\"Piputuś\",\r\n         \"age\":16\r\n      }\r\n   ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9026/family",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9026",
+							"path": [
+								"family"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateFamily Bad Validate 400 Bad Request Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"familyName\":\"Piputuś\",\r\n   \"nrOfAdults\":1,\r\n   \"nrOfChildren\":2,\r\n   \"nrOfInfants\":1,\r\n   \"familyMembersList\":[\r\n      {\r\n         \"givenName\":\"Mateusz\",\r\n         \"familyName\":\"Piputuś\",\r\n         \"age\":-1\r\n      },\r\n      {\r\n         \"givenName\":\"Katarzyna\",\r\n         \"familyName\":\"Piputuś\",\r\n         \"age\":3\r\n      },\r\n      {\r\n         \"givenName\":\"Asia\",\r\n         \"familyName\":\"Piputuś\",\r\n         \"age\":4\r\n      },\r\n      {\r\n         \"givenName\":\"Andrzej\",\r\n         \"familyName\":\"Piputuś\",\r\n         \"age\":15\r\n      },\r\n      {\r\n         \"givenName\":\"Izabela\",\r\n         \"familyName\":\"Piputuś\",\r\n         \"age\":16\r\n      }\r\n   ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9026/family",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9026",
+							"path": [
+								"family"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateFamily empty members",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"familyName\":\"Piputuś\",\r\n   \"nrOfAdults\":0,\r\n   \"nrOfChildren\":0,\r\n   \"nrOfInfants\":0,\r\n   \"familyMembersList\":[]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9026/family",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9026",
+							"path": [
+								"family"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

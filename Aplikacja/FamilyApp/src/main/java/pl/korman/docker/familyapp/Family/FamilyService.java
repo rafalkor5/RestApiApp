@@ -77,6 +77,7 @@ public class FamilyService {
         int nrOfInfants = 0;
 
         for(var members: input.getFamilyMembersList()){
+            if(members.getAge() < 0) return false;
             if(members.getAge() >= 0 && members.getAge() <= 3){
                 nrOfInfants++;
             }else if(members.getAge() >= 4 && members.getAge() <= 15){
