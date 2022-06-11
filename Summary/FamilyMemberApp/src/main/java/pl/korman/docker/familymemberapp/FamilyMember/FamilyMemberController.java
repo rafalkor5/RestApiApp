@@ -16,13 +16,13 @@ public class FamilyMemberController {
 
 
     @GetMapping("/familymember/{familyid}")
-    public ResponseEntity<Iterable<FamilyMember>> SerachFamilyMember(@PathVariable("familyid") int familyid){
+    public ResponseEntity<Iterable<FamilyMember>> serachFamilyMember(@PathVariable("familyid") int familyid){
         return ResponseEntity.ok(service.findFamilyMemberByFamilyId(familyid));
     }
 
 
     @PostMapping("/familymember")
-    public ResponseEntity<FamilyMember> CreateFamilyMember(@RequestBody @Valid FamilyMember_CreateDTO input){
+    public ResponseEntity<FamilyMember> createFamilyMember(@RequestBody @Valid FamilyMember_CreateDTO input){
         var familyMember = service.createNewMember(input);
         return ResponseEntity.created(URI.create("/" + familyMember.getId() )).body(familyMember);
     }

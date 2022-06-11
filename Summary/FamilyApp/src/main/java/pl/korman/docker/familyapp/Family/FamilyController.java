@@ -15,9 +15,9 @@ public class FamilyController {
     @NonNull
     private FamilyService service;
 
-    @GetMapping("/family/{familyid}")
-    public ResponseEntity<FamilyOutputDTO> getFamily(@PathVariable("familyid") int familyid) {
-        return service.getFamilyByID(familyid);
+    @GetMapping("/family/{familyId}")
+    public ResponseEntity<FamilyOutputDTO> getFamily(@PathVariable("familyId") int familyId) {
+        return service.getFamilyByID(familyId);
     }
 
     @PostMapping("/family")
