@@ -138,8 +138,8 @@ public class FamilyService {
      *
      * @return A FamilyOutputDTO object
      */
-    public ResponseEntity<FamilyOutputDTO> getFamilyByID(int familyid){
-        Optional<Family> family = familyRepo.findById(familyid);
+    public ResponseEntity<FamilyOutputDTO> getFamilyByID(int familyId){
+        Optional<Family> family = familyRepo.findById(familyId);
         if(family.isPresent()){
             //SerachMembers
             RestTemplate restTemplate = new RestTemplate();
@@ -149,10 +149,10 @@ public class FamilyService {
                     FamilyMemberRestInputDTO[].class,
                     mymemberdomain,
                     serverport,
-                    familyid);
-            List<FamilyMemberRestInputDTO> familymembers = Arrays.stream(exchange.getBody()).collect(Collectors.toList());
+                    familyId);
+            List<FamilyMemberRestInputDTO> familyMembers = Arrays.stream(exchange.getBody()).collect(Collectors.toList());
             //Return Family
-            return ResponseEntity.ok(getFamilyOutputDTO(family.get(), familymembers));
+            return ResponseEntity.ok(getFamilyOutputDTO(family.get(), familyMembers));
         }
         return ResponseEntity.notFound().build();
     }
