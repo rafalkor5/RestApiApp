@@ -37,18 +37,6 @@ public class FamilyControllerTest {
                 .andExpect(MockMvcResultMatchers.status().is(201));
     }
 
-    @Test
-    void familyPost_blankFamilyName_schouldReturnStatus400BadRequest() throws Exception {
-        String content = "{\"familyName\":\"\",\"nrOfAdults\":1,\"nrOfChildren\":1,\"nrOfInfants\":1," +
-                "\"familyMembersList\":[{\"givenName\":\"Mateusz\",\"familyName\":\"Piputuś\",\"age\":0}," +
-                "{\"givenName\":\"Andrzej\",\"familyName\":\"Piputuś\",\"age\":15}," +
-                "{\"givenName\":\"Izabela\",\"familyName\":\"Piputuś\",\"age\":16}]}";
-        mockMvc.perform(MockMvcRequestBuilders.post("/family")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(content))
-                .andDo(MockMvcResultHandlers.print())
-                .andExpect(MockMvcResultMatchers.status().is(400));
-    }
 
 
 }
