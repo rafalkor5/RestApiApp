@@ -122,7 +122,7 @@ public class FamilyService {
                     HttpHeaders headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_JSON);
                     HttpEntity<String> request = new HttpEntity<>(requestJson,headers);
-                    return restTemplate.exchange("http://{mymemberdomain}:{serverport}/createfamilymember",
+                    return restTemplate.exchange("http://{mymemberdomain}:{serverport}/familymember",
                             HttpMethod.POST,
                             request,
                             FamilyMemberRestInputDTO.class,
@@ -143,7 +143,7 @@ public class FamilyService {
         if(family.isPresent()){
             //SerachMembers
             RestTemplate restTemplate = new RestTemplate();
-            ResponseEntity<FamilyMemberRestInputDTO[]> exchange = restTemplate.exchange("http://{mymemberdomain}:{serverport}/serachfamilymember/{id}",
+            ResponseEntity<FamilyMemberRestInputDTO[]> exchange = restTemplate.exchange("http://{mymemberdomain}:{serverport}/familymember/{id}",
                     HttpMethod.GET,
                     HttpEntity.EMPTY,
                     FamilyMemberRestInputDTO[].class,
