@@ -25,7 +25,7 @@ services:
       test: [ "CMD", "wget" ,"--spider", "http://localhost:9010/actuator/health"]
       timeout: 10s
       retries: 3
-      interval: 15s
+      interval: 10s
     depends_on:
       database:
         condition: service_healthy
@@ -38,7 +38,7 @@ services:
       test: [ "CMD", "wget" ,"--spider", "http://localhost:9020/actuator/health" ]
       timeout: 10s
       retries: 3
-      interval: 15s
+      interval: 10s
     depends_on:
       familymemberapp:
         condition: service_healthy
