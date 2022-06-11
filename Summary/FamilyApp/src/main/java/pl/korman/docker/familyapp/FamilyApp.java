@@ -1,4 +1,4 @@
-package pl.korman.docker.familymemberapp;
+package pl.korman.docker.familyapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,7 +14,7 @@ import javax.validation.Validator;
 import java.io.IOException;
 
 @SpringBootApplication
-public class FamilyMemberAppApplication {
+public class FamilyApp {
 
     @Bean
     Validator validator() {
@@ -22,7 +22,7 @@ public class FamilyMemberAppApplication {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(FamilyMemberAppApplication.class, args);
+        SpringApplication.run(FamilyApp.class, args);
     }
 
     @ControllerAdvice
@@ -35,3 +35,4 @@ public class FamilyMemberAppApplication {
         }
     }
 }
+
