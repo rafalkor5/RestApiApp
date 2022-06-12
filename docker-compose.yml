@@ -42,12 +42,7 @@ services:
     depends_on:
       familymemberapp:
         condition: service_healthy
-  phpmyadminfamilycontainer:
-    image: phpmyadmin
-    ports:
-      - "9030:80"
-    environment:
-      - PMA_ARBITRARY=1
+
 
 
 
