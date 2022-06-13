@@ -4,13 +4,13 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "familymembers")
 @Getter
 @Setter
 @NoArgsConstructor
-@RequiredArgsConstructor
 public class FamilyMember {
 
     @Setter(AccessLevel.NONE)
@@ -18,16 +18,22 @@ public class FamilyMember {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
 
-
-    @NonNull
+    @NotNull
     private int familyId;
     @NotBlank
-    @NonNull
+    @NotNull
     private String givenName;
     @NotBlank
-    @NonNull
+    @NotNull
     private String familyName;
-    @NonNull
+    @NotNull
     private int age;
+
+    public FamilyMember(final int familyId, final String givenName, final String familyName, final int age) {
+        this.familyId = familyId;
+        this.givenName = givenName;
+        this.familyName = familyName;
+        this.age = age;
+    }
 
 }
