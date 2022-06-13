@@ -14,5 +14,5 @@ public class FamilyOutputDTO {
     private int nrOfAdults;
     private int nrOfChildren;
     private int nrOfInfants;
-    private List<FamilyMemberRestInputDTO> familyMemberdtoList;
+    private List<FamilyMemberRestInputDTO> familyMembersDtoList;
 }

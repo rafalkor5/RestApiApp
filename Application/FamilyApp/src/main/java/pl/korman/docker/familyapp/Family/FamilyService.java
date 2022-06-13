@@ -13,6 +13,8 @@ import pl.korman.docker.familyapp.Family.DTO.FamilyCreateDTO;
 import pl.korman.docker.familyapp.Family.DTO.FamilyMemberRestInputDTO;
 import pl.korman.docker.familyapp.Family.DTO.FamilyMemberRestOutputDTO;
 import pl.korman.docker.familyapp.Family.DTO.FamilyOutputDTO;
+import pl.korman.docker.familyapp.Family.Mapper.FamilyMapper;
+import pl.korman.docker.familyapp.Family.Mapper.FamilyOutputMapper;
 
 import java.net.URI;
 import java.util.Arrays;
@@ -42,24 +44,12 @@ public class FamilyService {
         //validate family
         if(validateFamilyData(input)) {
             //Save Family
-            var familyReturnFromSave = familyRepo.save(new Family(
-                    input.getFamilyName(),
-                    input.getNrOfAdults(),
-                    input.getNrOfChildren(),
-                    input.getNrOfInfants()
-            ));
+            var familyReturnFromSave = familyRepo.save(FamilyMapper.INSTANCE.createDtoToFamily(input));
             //Get FamilyMembers from input and  POST (CreateMember)
-            List<FamilyMemberRestInputDTO> returnFromPost = postFamilyMember(getFamilyMembersFrom_input(input, familyReturnFromSave.getId()));
+            List<FamilyMemberRestInputDTO> membersReturnFromPost = postFamilyMember(getFamilyMembersFrom_input(input, familyReturnFromSave.getId()));
             //Return Family
-            FamilyOutputDTO newFamily = new FamilyOutputDTO(
-                    familyReturnFromSave.getId(),
-                    familyReturnFromSave.getFamilyName(),
-                    familyReturnFromSave.getNrOfAdults(),
-                    familyReturnFromSave.getNrOfChildren(),
-                    familyReturnFromSave.getNrOfInfants(),
-                    returnFromPost
-            );
-            return ResponseEntity.created(URI.create("/" + newFamily.getId())).body(newFamily);
+            return ResponseEntity.created(URI.create("/" + familyReturnFromSave.getId()))
+                    .body(FamilyOutputMapper.INSTANCE.familyAndFamilyMembersToOutputDto(familyReturnFromSave,membersReturnFromPost));
         }
         return ResponseEntity.badRequest().build();
     }
@@ -153,26 +143,8 @@ public class FamilyService {
                     familyId);
             List<FamilyMemberRestInputDTO> familyMembers = Arrays.stream(exchange.getBody()).collect(Collectors.toList());
             //Return Family
-            return ResponseEntity.ok(getFamilyOutputDTO(family.get(), familyMembers));
+            return ResponseEntity.ok(FamilyOutputMapper.INSTANCE.familyAndFamilyMembersToOutputDto(family.get(), familyMembers));
         }
         return ResponseEntity.notFound().build();
-    }
-
-    /**
-     * It takes a family and a list of family members and returns a family output DTO
-     *
-     * @param family the family object that we want to convert to a DTO
-     * @param members a list of FamilyMemberRestInputDTO objects
-     * @return A FamilyOutputDTO object.
-     */
-    private FamilyOutputDTO getFamilyOutputDTO(Family family, List<FamilyMemberRestInputDTO> members){
-        return new FamilyOutputDTO(
-                family.getId(),
-                family.getFamilyName(),
-                family.getNrOfAdults(),
-                family.getNrOfChildren(),
-                family.getNrOfInfants(),
-                members
-        );
     }
 }
