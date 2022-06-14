@@ -17,7 +17,7 @@ services:
       retries: 3
       interval: 15s
   familymemberapp:
-    build: ./summary/familymemberApp
+    build: ./Application/familymemberApp
     ports:
       - "9010:9010"
     container_name: FamilyMemberAPP
@@ -30,7 +30,7 @@ services:
       database:
         condition: service_healthy
   familyapp:
-    build: ./summary/familyapp
+    build: ./Application/familyapp
     ports:
       - "9020:9020"
     container_name: FamilyAPP
