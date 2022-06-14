@@ -10,7 +10,7 @@
     </parent>
     <groupId>pl.korman.docker</groupId>
     <artifactId>FamilyApp</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>FamilyApp</name>
     <description>FamilyApp</description>
     <properties>
@@ -69,6 +69,11 @@
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
             <version>${org.mapstruct.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
