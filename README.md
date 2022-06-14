@@ -19,7 +19,7 @@ Inside the folder you can find a postman collection.
 It can be imported and rest api tested.
 
 ### What is inside a Test folder?
-Inside you can find screenshots of controler tests. Unfortunately these tests only work with a local MySQL database.
+Inside you can find screenshots of controler tests familyApp. These tests only work when the local familyMemberApp is running.
 
 ### How I can run Swagger UI?
 App run from docker:
