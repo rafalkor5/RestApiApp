@@ -8,12 +8,10 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "familymembers")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 public class FamilyMember {
 
-    @Setter(AccessLevel.NONE)
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
